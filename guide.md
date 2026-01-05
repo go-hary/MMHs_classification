@@ -9,37 +9,50 @@ This guide provides a step-by-step tutorial on how to use the dashboard and expl
 Follow these steps to explore the transit network and analyze hub performance.
 
 ### Step 1: Pick Hub Type
-Navigate to the **Control Parameters** panel. Select the transit modes you wish to visualize using the button-like indicators:
+Navigate to the **Control Parameters** panel. Select the transit modes you wish to visualize using the buttons.
 
-* 🔵 ` Train ` : Regional and suburban backbone linking Milan with the wider metropolitan area.
-* 🔹 ` Metro ` : High-frequency, high-capacity urban network connecting major poles.
-* 🟢 ` Bus ` : General bus routes and trolleybus orbital lines.
-* 🟠 ` Tram ` : Dense surface rail grid that distributes flows within the urban fabric.
+![Control Parameters Hub Type](./1.png)
+*Figure 1: Hub Type selection buttons in the dashboard.*
+
+* 🔵 ` Train `: Regional and suburban backbone linking Milan with the wider metropolitan area.
+* 🔹 ` Metro `: High-frequency, high-capacity urban network connecting major poles.
+* 🟢 ` Bus `: General bus routes and trolleybus orbital lines.
+* 🟠 ` Tram `: Dense surface rail grid that distributes flows within the urban fabric.
 
 ### Step 2: Pick Hub Statuses
-Filter the hubs based on their performance classification categories:
+Filter the hubs based on their performance classification categories.
 
-` Stressed `  ` Unbalanced Node `  ` Dependency `  ` Balanced `  ` Unbalanced Place `
+![Hub Status Filters](./image_a9c502.png)
+*Figure 2: Classification filters (Stressed, Unbalanced, etc.).*
 
-* **Stressed**: High transport supply and high urban intensity.
-* **Unbalanced Node**: Strong transport supply but low local activity.
-* **Dependency**: Strong local activity but poor transport supply.
-* **Balanced**: Equilibrium between transport and urban context.
+* ` Stressed `: High transport supply and high urban intensity.
+* ` Unbalanced Node `: Strong transport supply but low local activity.
+* ` Dependency `: Strong local activity but poor transport supply.
+* ` Balanced `: Equilibrium between transport and urban context.
 
 ### Step 3: Change Size and Opacity
-Use the sliders in the control panel to customize your view:
+Use the sliders in the control panel to customize your view.
+
 * **Size**: Adjust the marker size (e.g., **12px**) to highlight specific nodes.
 * **Opacity**: Lower the opacity (e.g., **0.7**) to see overlapping transit lines or underlying map details.
 
 ### Step 4: Click on the Graph or the Map
-* **The Map**: Click on any square marker to see the station name and its specific metrics.
-* **The Scatter Chart**: Click or hover over points in the chart. This graph plots the **Node** value (vertical axis) against the **Place** value (horizontal axis) to identify outliers.
+You can interact with the data through two primary views.
+
+![Dashboard Overview](./image_9d76c2.jpg)
+*Figure 3: Main interface showing the Map and Scatter Chart.*
+
+* **The Map**: Click on any square marker. A popup will appear with the **Station Name** and its **Hub Status** (e.g., "Dependency").
+* **The Scatter Chart**: Hover over or click points in the chart. This plots the **Node** value (vertical) against the **Place** value (horizontal) to identify outliers.
 
 ---
 
 ## 2. On Each Stop: What You Can See
 
-When you select a hub, the **Station Info** panel displays the following real-time research data:
+When you select a hub (e.g., **Pioltello-Limito**), the **Station Info** panel displays the real-time research metrics.
+
+![Station Info Panel](./3.jpg)
+*Figure 4: Detailed metrics for a selected hub.*
 
 | Metric | Description |
 | :--- | :--- |
@@ -66,13 +79,7 @@ The dashboard implements a revised version of the **Node/Place model**.
 Each hub is scored based on the permanence of its infrastructure (e.g., Train = 6, Metro = 5). These scores determine the **Catchment Area**, which is the radius used to calculate population and services. Larger hubs have a **700m** radius, while smaller nodes use a **165m** radius.
 
 ### 3.2 IAPI Index (Place Value)
-The **Place** dimension is calculated using the IAPI index, which evaluates proximity to six "baskets" of services:
-1. **Public and open spaces**
-2. **Commercial activities**
-3. **Gathering and cultural spaces**
-4. **Sport facilities**
-5. **Health and social care**
-6. **Education spaces**
+The **Place** dimension is calculated using the IAPI index, which evaluates proximity to six "baskets" of services including Public Spaces, Commercial Activities, Culture, Sport, Health, and Education.
 
 ---
 
@@ -82,5 +89,3 @@ The **Place** dimension is calculated using the IAPI index, which evaluates prox
 * **Rendering**: Mapbox for geographic data.
 * **Typography**: Manrope font family for maximum readability.
 * **Application Type**: Standalone Progressive Web App (PWA).
-
----
