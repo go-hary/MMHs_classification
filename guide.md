@@ -39,7 +39,7 @@ Use the sliders in the control panel to customize your view.
 ### Step 4: Click on the Graph or the Map
 You can interact with the data through two primary views.
 
-![Dashboard Overview](./3.jpg)
+![Dashboard Overview](./3.png)
 *Figure 3: Main interface showing the Map and Scatter Chart.*
 
 * **The Map**: Click on any square marker. A popup will appear with the **Station Name** and its **Hub Status** (e.g., "Dependency").
@@ -51,7 +51,7 @@ You can interact with the data through two primary views.
 
 When you select a hub (e.g., **Pioltello-Limito**), the **Station Info** panel displays the real-time research metrics.
 
-![Station Info Panel](./4.jpg)
+![Station Info Panel](./5.png)
 *Figure 4: Detailed metrics for a selected hub.*
 
 | Metric | Description |
