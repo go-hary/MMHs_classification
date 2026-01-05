@@ -1,64 +1,80 @@
-# Dashboard Features & Interface Guide
+# Transit Dashboard: User Guide & Methodology
 
-This guide details the interactive components of the **Transit Dashboard** and how they relate to the underlying MMH research methodology.
-
----
-
-## 1. Global Navigation & Map
-The main interface consists of a dynamic Mapbox-powered environment that serves as the primary canvas for transit analysis.
-
-* **Interactivity**: You can pan, zoom, and click on individual transit hubs to retrieve localized data.
-* **Hub Visualization**: Hubs are represented by square markers, with colors corresponding to the primary transit mode:
-    * **Blue**: Train nodes.
-    * **Light Blue**: Metro nodes.
-    * **Green**: Bus nodes.
-    * **Orange**: Tram nodes.
+This guide provides a step-by-step tutorial on how to use the dashboard and explains the underlying scientific methodology used to classify Multimodal Mobility Hubs (MMHs) in Milan.
 
 ---
 
-## 2. Control Parameters Panel
-Located at the top right, this panel allows you to filter and customize the data displayed on the map.
+## 1. How to Start: Step-by-Step Tutorial
 
-### Hub Filters
-* **Hub Type**: Toggle individual transit modes (Train, Metro, Bus, Tram) on or off to focus your analysis.
-* **Hub Status**: Filter hubs based on their Node/Place classification:
-    * **Stressed**: High demand on both transport and urban services.
-    * **Unbalanced Node**: Strong transport supply but low urban density/services.
-    * **Dependency**: Strong urban density but poor transport connectivity.
-    * **Balanced**: Equilibrium between transport supply and urban services.
+Follow these steps to explore the transit network and analyze hub performance.
 
-### Visual Customization
-* **Size Slider**: Dynamically adjust the scale of the map markers (from 1px to 20px).
-* **Opacity Slider**: Change the transparency of markers to better see the underlying street network or overlapping hubs.
+### Step 1: Pick Hub Type
+Navigate to the **Control Parameters** panel in the top right. Select the primary transit modes you wish to visualize:
+* **Train**: Regional and suburban backbone.
+* **Metro**: High-frequency urban network.
+* **Bus**: General and trolleybus lines.
+* **Tram**: Dense surface rail grid.
+
+### Step 2: Pick Hub Statuses
+Filter the hubs based on their performance classification. These statuses are derived from the Node/Place framework:
+* **Stressed**: High transport supply and high urban intensity.
+* **Unbalanced Node**: Strong transport supply but low local activity.
+* **Dependency**: Strong local activity but poor transport supply.
+* **Balanced**: Equilibrium between transport and urban context.
+
+### Step 3: Change Size and Opacity
+Use the sliders in the control panel to customize your view:
+* **Size**: Adjust the marker size (12px by default) to highlight specific nodes.
+* **Opacity**: Lower the opacity (0.7 by default) to see overlapping transit lines or underlying map details.
+
+### Step 4: Interact with the Map or Graph
+* **The Map**: Click on any square marker to see the station name and its specific metrics.
+* **The Scatter Chart**: Click or hover over points in the chart. This graph plots the **Node** value (vertical axis) against the **Place** value (horizontal axis) to help you find outliers in the network.
 
 ---
 
-## 3. Scatter Chart Analytics
-The **Scatter Chart** provides a mathematical visualization of the entire network's performance.
+## 2. What You See: Station Info & Metrics
 
-* **X-Axis (Place)**: Represents the normalized urban intensity and service diversity.
-* **Y-Axis (Node)**: Represents the normalized transport accessibility and frequency.
-* **Function**: This chart allows you to instantly see which hubs are "outliers" (e.g., a hub very high on the Y-axis but low on the X-axis is an "Unbalanced Node").
+When you click on a hub, the **Station Info** panel displays the following real-time research data:
 
-
-
----
-
-## 4. Station Info (Deep-Dive Panel)
-When a hub is selected, this panel displays the specific z-scores and raw metrics used in the MMH classification.
-
-| Feature | Description |
+| Metric | Description |
 | :--- | :--- |
-| **Transport Options** | Number of unique transit types within a 125m walking buffer. |
-| **Transfer Time** | Estimated minutes required to walk and wait for a connection at the nearest alternative station. |
-| **Frequency of Arrivals** | Total number of daily vehicle stops (frequency) at that specific hub. |
-| **BikeMi Proximity** | Distance (meters) and bike capacity of the nearest shared-mobility station. |
-| **Accessibility (PRM)** | Binary indicator (Yes/No) for ramps, elevators, and facilities for people with reduced mobility. |
-| **IAPI Index** | The proximity score for daily services (Schools, Health, Culture, etc.). |
+| **Transport options within 125m** | The number of unique transit types available within a 2-minute walk. |
+| **Walking/Transfer Time** | The estimated time in minutes to reach and board at the closest alternative station. |
+| **Frequency of Arrivals** | Total daily vehicle stops, indicating service reliability and capacity. |
+| **Routes per Stop** | The number of unique destinations accessible without a transfer. |
+| **Longest Route per Stop** | The maximum direct distance reachable from this stop. |
+| **BikeMi Distance/Capacity** | Proximity to and bike availability of the nearest shared-mobility station. |
+| **Accessibility (PRM)** | Whether the station has elevators, ramps, or escalators for limited mobility. |
+| **Weather Protection** | Whether the station provides adequate shelter from environmental factors. |
+| **Population** | Number of registered residents living within the hub's specific catchment area. |
+| **IAPI Index** | The Inclusive Accessibility by Proximity Index, measuring access to daily services. |
 
 ---
 
-## 5. Technical Specifications
-* **Responsive Layout**: The dashboard uses a flexible sidebar system that collapses on smaller screens.
-* **Performance**: Built with **React** to ensure that filtering thousands of transit nodes happens in real-time without page refreshes.
-* **Offline Ready**: As a Progressive Web App (PWA), the dashboard can be cached for faster loading on subsequent visits.
+## 3. Scientific Methodology: The Node/Place Framework
+
+The dashboard operates on a revised version of the **Bertolini Node/Place model**.
+
+
+
+### 3.1 ABC Scoring and Catchment
+Each hub is scored based on the permanence of its infrastructure (Train = 6, Metro = 5, etc.). These scores determine the **Catchment Area**, which is the radius used to calculate population and services. Larger hubs have a 700m radius, while smaller nodes use a 165m radius.
+
+### 3.2 IAPI Index (Place Value)
+The **Place** dimension is calculated using the IAPI index, which evaluates proximity to six "baskets" of services:
+1. Public and open spaces.
+2. Commercial activities.
+3. Gathering and cultural spaces.
+4. Sport facilities.
+5. Health and social care.
+6. Education spaces.
+
+---
+
+## 4. Technical Specifications
+
+* **Frontend**: React and Tailwind CSS.
+* **Rendering**: Mapbox for geographic data.
+* **Typography**: Manrope font family for readability.
+* **Application Type**: Standalone Progressive Web App (PWA).
